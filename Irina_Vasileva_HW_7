@@ -1,0 +1,84 @@
+// 7.7.1
+function printInfo() {
+    console.log("Name: " + this.name + ", Age: " + this.age);
+}
+
+let person = {
+    name: "John",
+    age: 30
+};
+
+printInfo.call(person);
+
+
+
+//7.7.2
+function calculate(a, b, operator) {
+        if (operation === 'add') {
+            return a + b;
+        } else if (operation === 'subtract') {
+            return a - b;
+        } else if (operation === 'multiply') {
+            return a * b;
+        } else if (operation === 'divide') {
+        }
+
+        return 0;
+    }
+}
+
+let result = calculate.apply(null, [2, 3, "+"]);
+console.log(result);
+
+
+
+// 7.7.3
+// Исходный массив объектов пользователей
+let users = [
+    { name: "Max", age: 10 },
+    { name: "Alice", age: 20 },
+    { name: "Luke", age: 40 },
+    { name: "Carl", age: 100 }
+];
+
+let adults = users.filter(function(user) {
+    return user.age >= 18;
+});
+
+let adultsNames = adults.map(function(user) {
+    return user.name;
+});
+
+console.log(adults);
+console.log(adultsNames);
+
+
+
+//7.7.4
+function setFullName(fullName) {
+    this.fullName = fullName;
+}
+
+let person = {
+    name: "John",
+    age: 30
+};
+
+let setPersonFullName = setFullName.bind(person);
+
+setPersonFullName("John Smith");
+
+console.log(person.fullName);
+
+
+
+//7.7.5
+function numbers(arr) {
+    let uniqueNumbers = [...new Set(arr)];
+    
+    uniqueNumbers.sort(function(a, b) {
+        return a - b;
+    });
+    
+    return uniqueNumbers;
+}
